@@ -27,3 +27,10 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
+## How to run app
+1. first setup the MySQL db by creating the docker container. There is a dockerfile so you just have to run 'docker compose up' while in the folder directory if you have the docker cli.
+
+2. run npx prisma db push to push the database
+
+3. run npm run dev to start the app
