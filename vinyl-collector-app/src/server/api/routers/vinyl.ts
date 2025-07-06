@@ -12,7 +12,7 @@ export const vinylRouter = createTRPCRouter({
     all: protectedProcedure.query(async ({ctx}) => {
         const vinyls = await ctx.db.vinyl.findMany({
             where:{
-                id: ctx.session.user.id,
+                createdById: ctx.session.user.id,
             }
         });
         console.log('vinyls from prisma',  vinyls.map(({id, title, artist}) => ({id, title, artist})));
@@ -21,11 +21,13 @@ export const vinylRouter = createTRPCRouter({
             id: 'testID1',
             title: 'testVinyl',
             artist:  'fakeArtist',
+            yearReleased: 1999,
         },
         {
             id: 'testID2',
             title: 'testViny2l',
             artist:  'fakeArtist2',
+            yearReleased: 2000,
         },
     ]
     }),
@@ -55,4 +57,5 @@ export const vinylRouter = createTRPCRouter({
             }
         });
     }),
+
 });
