@@ -11,11 +11,11 @@ export type Vinyl = {
   id: string;
   title: string;
   artist: string;
-  yearReleased?: number;
-  genre?: string;
-  imageUrl?: string;
-  createdAt?: string; // or Date, depending on your usage
-  updatedAt?: string; // or Date
+  yearReleased?: number | null;
+  genre?: string | null;
+  imageUrl?: string | null;
+  createdAt?: Date; // or Date, depending on your usage
+  updatedAt?: Date; // or Date
   collectionId?: string | null;
   createdById?: string;
 };

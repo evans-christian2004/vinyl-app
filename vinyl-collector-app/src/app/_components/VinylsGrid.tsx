@@ -1,12 +1,20 @@
 import React from 'react'
-import { api } from '~/trpc/react'
 import VinylCard from './VinylCard'
+import { api } from '~/trpc/server'
+import type { Vinyl } from '~/types'
 
-const VinylsGrid = () => {
-  const  { data: vinyls, isLoading, isError } = api.vinyl.all.useQuery()
+const VinylsGrid = async () => {
+  let vinyls: Vinyl[] = []
+  try {
+    vinyls = await api.vinyl.all()
+  } catch (e) {
+    return <div className="">Error fetching Records :/</div>
+  }
 
-  if (isLoading) return <div className="">Loading Records</div>
-  if (isError) return <div className="">Error fetching Records :/</div>
+  if (!vinyls.length) {
+    return <div>Start tracking your collection by adding a vinyl</div>
+  }
+
   return (
     <>
       {vinyls?.length ? vinyls.map(vinyl => {

@@ -1,5 +1,5 @@
-import { vinylRouter } from "~/server/api/routers/vinyl";
 import { collectionRouter } from "./routers/collections";
+import { vinylRouter } from "./routers/vinyl";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 
 /**
