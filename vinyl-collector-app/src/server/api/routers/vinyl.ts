@@ -52,6 +52,7 @@ export const vinylRouter = createTRPCRouter({
             data: {
                 title: input.title,
                 artist: input.artist,
+                condition: input.condition,
                 createdBy: {
                     connect:{
                         id: ctx.session.user.id

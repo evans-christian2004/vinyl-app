@@ -12,6 +12,7 @@ export type Vinyl = {
   title: string;
   artist: string;
   yearReleased?: number | null;
+  condition?: string | null;
   genre?: string | null;
   imageUrl?: string | null;
   createdAt?: Date; // or Date, depending on your usage
@@ -23,4 +24,5 @@ export type Vinyl = {
 export const vinylInput = z.object({
     title: z.string(),
     artist: z.string(),
+    condition: z.string(),
 });

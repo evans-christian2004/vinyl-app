@@ -15,34 +15,35 @@ export const collectionRouter = createTRPCRouter({
                 createdById: ctx.session.user.id,
             }
         });
-        console.log('collections from prisma',  collections.map(({id, name}) => ({id, name})));
 
-        return [
-        {
-            id: 'col1',
-            name: 'Classic Rock',
-            vinyls: [
-                { id: 'v1', title: 'Abbey Road', artist: 'The Beatles', yearReleased: 1969 },
-                { id: 'v2', title: 'Led Zeppelin IV', artist: 'Led Zeppelin', year: 1971 },
-            ],
-        },
-        {
-            id: 'col2',
-            name: 'Jazz Essentials',
-            vinyls: [
-                { id: 'v3', title: 'Kind of Blue', artist: 'Miles Davis', yearReleased: 1959 },
-                { id: 'v4', title: 'Blue Train', artist: 'John Coltrane', yearReleased: 1957 },
-            ],
-        },
-        {
-            id: 'col3',
-            name: 'Modern Indie',
-            vinyls: [
-                { id: 'v5', title: 'AM', artist: 'Arctic Monkeys', yearReleased: 2013 },
-                { id: 'v6', title: 'Currents', artist: 'Tame Impala', yearReleased: 2015 },
-            ],
-        },
-        ];
+        return collections
+        // console.log('collections from prisma',  collections.map(({id, name}) => ({id, name})));
+        // return [
+        // {
+        //     id: 'col1',
+        //     name: 'Classic Rock',
+        //     vinyls: [
+        //         { id: 'v1', title: 'Abbey Road', artist: 'The Beatles', yearReleased: 1969 },
+        //         { id: 'v2', title: 'Led Zeppelin IV', artist: 'Led Zeppelin', year: 1971 },
+        //     ],
+        // },
+        // {
+        //     id: 'col2',
+        //     name: 'Jazz Essentials',
+        //     vinyls: [
+        //         { id: 'v3', title: 'Kind of Blue', artist: 'Miles Davis', yearReleased: 1959 },
+        //         { id: 'v4', title: 'Blue Train', artist: 'John Coltrane', yearReleased: 1957 },
+        //     ],
+        // },
+        // {
+        //     id: 'col3',
+        //     name: 'Modern Indie',
+        //     vinyls: [
+        //         { id: 'v5', title: 'AM', artist: 'Arctic Monkeys', yearReleased: 2013 },
+        //         { id: 'v6', title: 'Currents', artist: 'Tame Impala', yearReleased: 2015 },
+        //     ],
+        // },
+        // ];
     }),
 
     create: protectedProcedure
