@@ -8,3 +8,8 @@
   --color-primary-300: #BBBBBB;
   --color-primary-400: #2B2B2B;
 }
+
+body{
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-400);
+}

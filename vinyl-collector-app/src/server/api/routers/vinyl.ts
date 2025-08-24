@@ -8,6 +8,12 @@ import { vinylInput } from "~/types";
 
 export const vinylRouter = createTRPCRouter({
     all: protectedProcedure.query(async ({ctx}) => {
+        const vinyls = await ctx.db.vinyl.findMany()
+        return vinyls
+    }),
+    
+    
+    allUser: protectedProcedure.query(async ({ctx}) => {
         const vinyls = await ctx.db.vinyl.findMany({
             where:{
                 createdById: ctx.session.user.id,

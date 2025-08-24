@@ -6,7 +6,7 @@ import type { Vinyl } from '~/types'
 const VinylsGrid = async () => {
   let vinyls: Vinyl[] = []
   try {
-    vinyls = await api.vinyl.all()
+    vinyls = await api.vinyl.allUser()
   } catch (e) {
     return <div className="">Error fetching Records :/</div>
   }

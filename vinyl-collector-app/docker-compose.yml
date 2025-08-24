@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres
+    container_name: postgres_local
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - ${DB_PORT}:5432   # expose Postgresql db on port 8080
+    volumes:
+      - ./docker-data/db:/var/lib/postgresql/db_data         # persistent storage for PGSQL data
