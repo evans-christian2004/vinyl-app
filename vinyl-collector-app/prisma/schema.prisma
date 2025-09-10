@@ -18,6 +18,8 @@ model Vinyl {
   id        String   @id @default(cuid())
   title     String
   artist    String
+  color     String?
+  edition   String?
   yearReleased      Int?
   price     Float?
   condition String

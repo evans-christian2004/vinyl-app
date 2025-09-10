@@ -11,6 +11,8 @@ export type Vinyl = {
   id: string;
   title: string;
   artist: string;
+  color?: string | null;
+  edition?: string | null;
   yearReleased?: number | null;
   condition?: string | null;
   genre?: string | null;

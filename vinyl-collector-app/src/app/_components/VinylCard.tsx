@@ -6,12 +6,13 @@ type VinylProps = {
 }
 
 const VinylCard: React.FC<VinylProps> = ({vinyl}) => {
-  const {title, artist, yearReleased} = vinyl
+  const {title, artist, yearReleased, color, edition} = vinyl
   return (
     <div className="">
       <h4>{title}</h4>
       <p>{artist}</p>
       <p>{yearReleased && `(${yearReleased})`}</p>
+      <p className='bg-[]'>{edition && `(${yearReleased})`}</p>
     </div>
   )
 }

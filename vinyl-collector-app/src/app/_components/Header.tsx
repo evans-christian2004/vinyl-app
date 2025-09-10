@@ -19,8 +19,7 @@ export default async function Header() {
           <div className="flex items-center gap-2">
             <Link
               href={session ? "/api/auth/signout" : "/api/auth/signin"}
-              className="rounded-full bg-primary-400 border-primary-400 pl-0 pr-6 py-1 text-primary-100 no-underline transition flex items-center gap-2
-                          hover:text-primary-400 hover:bg-primary-100 border-1 ease-in-out duration-300"
+              className={"rounded-full bg-primary-400 border-primary-400 pr-6 py-1 text-primary-100 no-underline transition flex items-center gap-2 hover:text-primary-400 hover:bg-primary-100 border-2 ease-in-out duration-300" + (session ? " pl-0" : " pl-6")}
             >
               
               {session?.user?.image && (

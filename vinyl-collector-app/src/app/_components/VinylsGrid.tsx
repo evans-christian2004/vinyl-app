@@ -4,7 +4,7 @@ import { api } from '~/trpc/server'
 import type { Vinyl } from '~/types'
 
 const VinylsGrid = async () => {
-  let vinyls: Vinyl[] = []
+  let vinyls: Vinyl[]
   try {
     vinyls = await api.vinyl.allUser()
   } catch (e) {

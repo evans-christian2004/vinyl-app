@@ -19,7 +19,8 @@ export const vinylRouter = createTRPCRouter({
                 createdById: ctx.session.user.id,
             }
         });
-        return vinyls
+        console.log(vinyls);
+        return vinyls;
         
     //     return [
     //   {
@@ -36,9 +37,11 @@ export const vinylRouter = createTRPCRouter({
     //   },
     //   {
     //     id: 'testID2',
-    //     title: 'testViny2l',
+    //     title: 'testViny2',
     //     artist:  'fakeArtist2',
-    //     yearReleased: 2000,
+    //     color: 'CEBACF',
+    //     edition: 'Thistle',
+    //     yearReleased: null,
     //     genre: null,
     //     imageUrl: null,
     //     createdAt: new Date(),
@@ -47,7 +50,7 @@ export const vinylRouter = createTRPCRouter({
     //     createdById: 'testUser2',
     //   },
     // ]
-        // console.log('vinyls from prisma',  vinyls.map(({id, title, artist}) => ({id, title, artist})));
+        console.log('vinyls from prisma',  vinyls.map(({id, title, artist}) => ({id, title, artist})));
         
     }),
 
