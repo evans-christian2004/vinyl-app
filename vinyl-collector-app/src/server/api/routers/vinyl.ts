@@ -19,39 +19,7 @@ export const vinylRouter = createTRPCRouter({
                 createdById: ctx.session.user.id,
             }
         });
-        console.log(vinyls);
         return vinyls;
-        
-    //     return [
-    //   {
-    //     id: 'testID1',
-    //     title: 'testVinyl',
-    //     artist:  'fakeArtist',
-    //     yearReleased: 1999,
-    //     genre: null,
-    //     imageUrl: null,
-    //     createdAt: new Date(),
-    //     updatedAt: new Date(),
-    //     collectionId: null,
-    //     createdById: 'testUser1',
-    //   },
-    //   {
-    //     id: 'testID2',
-    //     title: 'testViny2',
-    //     artist:  'fakeArtist2',
-    //     color: 'CEBACF',
-    //     edition: 'Thistle',
-    //     yearReleased: null,
-    //     genre: null,
-    //     imageUrl: null,
-    //     createdAt: new Date(),
-    //     updatedAt: new Date(),
-    //     collectionId: null,
-    //     createdById: 'testUser2',
-    //   },
-    // ]
-        console.log('vinyls from prisma',  vinyls.map(({id, title, artist}) => ({id, title, artist})));
-        
     }),
 
     create: protectedProcedure
@@ -61,6 +29,8 @@ export const vinylRouter = createTRPCRouter({
             data: {
                 title: input.title,
                 artist: input.artist,
+                color: input.color,
+                edition: input.edition,
                 condition: input.condition,
                 createdBy: {
                     connect:{

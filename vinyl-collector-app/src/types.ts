@@ -26,5 +26,8 @@ export type Vinyl = {
 export const vinylInput = z.object({
     title: z.string(),
     artist: z.string(),
+    color: z.string(),
+    edition: z.string(),
+    yearReleased: z.number(),
     condition: z.string(),
 });
