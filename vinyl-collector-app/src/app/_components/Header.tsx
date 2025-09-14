@@ -8,7 +8,7 @@ export default async function Header() {
   const session = await auth();
 
   return (
-    <div>
+    <nav className='sticky top-0 border-b-1 border-primary-300'>
       <HydrateClient>
         <div className="flex items-center justify-around gap-4 py-1">
           <div className="flex items-center gap-2">
@@ -37,6 +37,6 @@ export default async function Header() {
           </div>
         </div>
       </HydrateClient>
-    </div>
+    </nav>
   );
 }
