@@ -18,7 +18,7 @@ const AddVinylForm = () => {
         artist: '',
         color: '',
         edition: '',
-        yearReleased: '1948',
+        yearReleased: '',
         condition: '',
     })
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +61,7 @@ const AddVinylForm = () => {
                     <input name="edition" value={form.edition} onChange={handleChange} placeholder="Edition" 
                         className='bg-white border-1 border-primary-300 px-2 py-1 rounded-full' 
                     />
-                    <input name="yearReleased" value={form.yearReleased} min={1948} onChange={handleChange} placeholder="Year Released" type="number" 
+                    <input name="yearReleased" value={form.yearReleased} onChange={handleChange} placeholder="Year Released" type="number" 
                         className='bg-white border-1 border-primary-300 px-2 py-1 rounded-full' 
                     />
                     <input name="condition" value={form.condition} onChange={handleChange} placeholder="Condition" 
