@@ -14,7 +14,7 @@ export type Vinyl = {
   color?: string | null;
   edition?: string | null;
   yearReleased?: number | null;
-  condition?: string | null;
+  condition: string;
   genre?: string | null;
   imageUrl?: string | null;
   createdAt?: Date; // or Date, depending on your usage
@@ -24,10 +24,10 @@ export type Vinyl = {
 };
 
 export const vinylInput = z.object({
-    title: z.string(),
-    artist: z.string(),
-    color: z.string(),
-    edition: z.string(),
-    yearReleased: z.number(),
-    condition: z.string(),
+  title: z.string(),
+  artist: z.string(),
+  color: z.string().optional(),
+  edition: z.string().optional(),
+  yearReleased: z.number().int().min(1948), //restricting vinyls to earliest year
+  condition: z.string(),
 });
