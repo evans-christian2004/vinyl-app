@@ -29,7 +29,6 @@ export default async function Header() {
                   width={30}
                   height={30}
                   className="rounded-full ml-1"
-                  unoptimized // Remove if you configure domains in next.config.js
                 />
               )}
               {session ? "Logout" : "Login"}
