@@ -13,7 +13,7 @@ const AddVinylForm = () => {
     
     const createVinyl = api.vinyl.create.useMutation()
 
-    const [form, setForm] = useState({
+   const [form, setForm] = useState({
         title: '',
         artist: '',
         color: '',
