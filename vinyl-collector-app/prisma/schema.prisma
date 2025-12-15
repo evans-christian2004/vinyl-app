@@ -14,40 +14,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Vinyl {
-  id        String   @id @default(cuid())
-  title     String
-  artist    String
-  color     String?
-  edition   String?
-  yearReleased      Int?
-  price     Float?
-  condition String
-  imageUrl  String?  @map("image_url")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  createdBy    User        @relation(fields: [createdById], references: [id])
-  createdById  String
-
-  Collection   Collection? @relation(fields: [collectionId], references: [id])
-  collectionId String?
-
-  @@index([title])
-  @@map("Vinyls")
-}
-
-model Collection {
-  id        String   @id @default(cuid())
-  name      String
-  vinyls    Vinyl[]
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  createdBy   User   @relation(fields: [createdById], references: [id])
-  createdById String
-}
-
 // Necessary for Next auth
 model Account {
   id                       String  @id @default(cuid())
@@ -85,7 +51,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   collections   Collection[]
-  vinyl         Vinyl[]
+  userVinyls    UserVinyl[]
 }
 
 model VerificationToken {
@@ -94,4 +60,68 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model GlobalVinyl {
+  id            String      @id @default(cuid())
+  title         String
+  artist        String
+  color         String?
+  edition       String?
+  yearReleased  Int?
+  imageUrl      String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  userVinyls    UserVinyl[]
+
+  @@index([title])
+}
+
+model UserVinyl {
+  id                 String      @id @default(cuid())
+  userId             String
+  globalVinylId      String
+  price              Float?
+  condition          String?
+  overrideTitle      String?
+  overrideArtist     String?
+  overrideColor      String?
+  overrideYear       Int?
+  overrideImageUrl   String?
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+  user               User        @relation(fields: [userId], references: [id])
+  globalVinyl        GlobalVinyl @relation(fields: [globalVinylId], references: [id])
+  collectionEntries  CollectionVinyl[]
+
+  @@unique([userId, globalVinylId])
+}
+
+model Collection {
+  id            String             @id @default(cuid())
+  name          String
+  slug          String             @unique
+  isMaster      Boolean            @default(false)
+  shareToken    String?            @unique
+  createdById   String
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  createdBy     User               @relation(fields: [createdById], references: [id])
+  vinyls        CollectionVinyl[]
+}
+
+model CollectionVinyl {
+  id               String     @id @default(cuid())
+  collectionId     String
+  userVinylId      String
+  fontColor        String?
+  backgroundColor  String?
+  borderStyle      String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  collection       Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  userVinyl        UserVinyl  @relation(fields: [userVinylId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, userVinylId])
 }
